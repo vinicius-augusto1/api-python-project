@@ -19,4 +19,11 @@ def relatorio_vendas():
         total_produtos=('produto', 'count')
     ).reset_index()
 
-    return jsonify(relatorio_cliente.to_dict(orient='records'))
+    produtos_por_cliente = df[['cliente', 'produto', 'quantidade', 'valor']]
+
+    resposta = {
+        'relatorio_por_cliente' : relatorio_cliente.dict(orient='records'),
+        'produtos_por_cliente' : produtos_por_cliente.dict(orient='records')
+    }
+
+    return jsonify(resposta)
