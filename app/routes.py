@@ -10,7 +10,6 @@ def relatorio():
     file = request.files['file']
     relatorio_cliente, produtos_por_cliente = gerar_relatorio_vendas(file)
 
-    # Gera a tabela visual
     gerar_tabela_vendas(relatorio_cliente)
 
     resposta = {
